@@ -158,3 +158,37 @@ section {
     height: 11.25em;
 }
 
+/* IPhone 11 Pro  */
+
+@media only screen and (max-width: 375px) {
+    body {
+      background-color: #f8f9fa; 
+    }
+  
+    .container {
+      width: 90%;
+      padding: 10px;
+    }
+  
+    h1 {
+      font-size: 22px;
+      text-align: center;
+    }
+  
+    .nav {
+      flex-direction: column; 
+      gap: 10px;
+      align-items: center;
+    }
+  
+    .content {
+      font-size: 16px;
+      text-align: justify;
+    }
+  
+    button {
+      width: 100%; 
+      padding: 12px;
+    }
+  }
+  
