@@ -55,6 +55,7 @@ section {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     background: url(images/background.png) no-repeat;
     background-size: cover;
     background-position: center;
@@ -120,14 +121,16 @@ section {
 
 .content{
     display: flex;
-    flex-direction: row;
     flex-wrap:wrap ;
     justify-content: center;
+    gap: 20px;
 }
 
 .card{
     background-color: #fff;
-    width: 21.25em;
+    width: calc(33.33% - 40px);
+    max-width: 350px; /* Prevents oversized cards */
+    min-width: 250px; /* Ensures they don't get too small */
     border-radius: 10px;
     padding: 25px;
     margin: 15px;
@@ -135,12 +138,12 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: transform 0.3s ease-in-out;
 
 }
 
 .card:hover{
-    transform: scale(1.1);
-    transition: 1s ease;
+    transform: scale(1.05);
 }
 
 .card .icon{
@@ -153,42 +156,94 @@ section {
 .card img{
     display: block;
     width: 20em;
+    overflow: hidden;
+    height: auto;
     padding: 10px;
     margin: auto;
     height: 11.25em;
 }
 
-/* IPhone 11 Pro  */
+.nav-links{
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
 
-@media only screen and (max-width: 375px) {
-    body {
-      background-color: #f8f9fa; 
-    }
+.nav-links li a {
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.hamburger{
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+
+/* Small Screens  */
+
   
-    .container {
-      width: 90%;
-      padding: 10px;
+  @media (max-width : 768px){
+
+    .main{
+        background-attachment: scroll;
+        background-size: cover;
     }
-  
-    h1 {
-      font-size: 22px;
-      text-align: center;
+
+
+
+    .nav-links {
+        display: flex; /* Keep flex so it doesn't break */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: -200px; /* Start off-screen */
+        background: whitesmoke;
+        width: 150px;
+        border-radius: 8px;
+        padding: 10px;
+        transition: right 0.3s ease-in-out; /* Smooth slide effect */
     }
-  
-    .nav {
-      flex-direction: column; 
-      gap: 10px;
-      align-items: center;
+
+    .nav-links.show {
+        right: 20px; /* Slide in */
     }
-  
-    .content {
-      font-size: 16px;
-      text-align: justify;
+
+    .hamburger {
+        display: block;
+    }   
+
+    .card {
+        width: 90%; /* Take up most of the screen */
+        
     }
-  
-    button {
-      width: 100%; 
-      padding: 12px;
+    .card img{
+        width: 95%;
     }
-  }
+}
+
+
+  /* Medium Screens */
   
+  @media (max-width: 1024px) {
+    .card {
+        width: calc(50% - 40px);
+    }
+    .card img{
+        width: 95%;
+    }
+}
+
+/*  Large screens */
+@media (min-width: 1200px) {
+    .card {
+        width: calc(33.33% - 40px);
+    }
+    .card img{
+        width: 95%;
+    }
+}
+
