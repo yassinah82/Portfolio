@@ -17,23 +17,4 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// Scroll
-document.addEventListener("DOMContentLoaded", function () {
-    let lastScrollTop = 0;
-    const navbar = document.querySelector("header");
-
-    window.addEventListener("scroll", function () {
-        let currentScroll = window.scrollY;
-
-        if (currentScroll > lastScrollTop) {
-            // Scrolling down → Hide navbar
-            navbar.style.top = "-100px"; 
-        } else {
-            // Scrolling up → Show navbar
-            navbar.style.top = "0"; 
-        }
-
-        lastScrollTop = currentScroll;
-    });
-});
 
