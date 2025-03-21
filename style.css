@@ -197,7 +197,14 @@ section {
         background-attachment: scroll;
         background-size: cover;
     }
-
+    
+    .header {
+        padding: 10px 20px;
+    }
+    
+    .logo{
+        margin-left:0;
+    }
 
 
     .nav-links {
