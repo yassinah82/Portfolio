@@ -55,7 +55,7 @@ section {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     background: url(images/background.png) no-repeat;
     background-size: cover;
     background-position: center;
@@ -181,12 +181,75 @@ section {
     cursor: pointer;
 }
 
+.form{
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align:start;
+}   
 
+.form-h2{
+    margin-bottom: 15px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    font-size: 16px;
+    border-radius: 15px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: var(--main-bule);
+    outline: none;
+}
+
+.message{
+    width: 600px;
+    height: 250px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    font-size: 15px;
+    border-radius: 15px ;
+    transition: border-color 0.3 ease;
+    
+
+}
+
+.message:focus{
+    border-color: var(--main-bule);
+    outline: none;
+}
+
+.submitbtn{
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background: var(--main-bule) ;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submitbtn:hover {
+    background: #2a5cf9;
+}
 
 /* Small Screens  */
 
   
-  @media (max-width : 768px){
+@media (max-width : 768px){
 
     .main{
         background-attachment: scroll;
