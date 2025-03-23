@@ -5,6 +5,51 @@
     --main-bule: #3a6cf4
 }
 
+/* -----------------DarkMode Function----------------- */
+.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+.dark-mode header {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .card {
+    background-color: #222;
+    color: white;
+}
+
+.dark-mode a {
+    color: #4e9eff;
+}
+
+.dark-mode .form{
+    background-color: #222;
+    color: white;
+    box-shadow: 0px 5px 10px rgba(255, 255, 255, 0.2); 
+}
+
+.dark-mode input,
+.dark-mode .message{
+    background-color: #333;
+    color: #fff;
+    border: 2px solid #4e9eff;
+}
+
+
+.dark-mode .submitbtn:hover {
+    background: #3a6cf4;
+}
+
+.dark-mode .contact {
+    background-color: #121212;
+}
+
+
+/* -----------------DarkMode Function----------------- */
+
+
 *{
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -61,7 +106,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: start;
-    background: url(images/background.png) no-repeat;
+    background: url(images/background.png) no-repeat center center/cover;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -186,12 +231,19 @@ section {
     cursor: pointer;
 }
 
+.contact{
+    text-align: center;
+    padding: 40px 20px;
+    background: #f4f4f4;
+    margin-top: 20px;
+}
+
 .form{
     background: white;
     padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    width: 350px;
+    border-radius: 20px;
+    box-shadow: 0px 5px 10px black;
+    width: 100%;
     text-align:start;
 }   
 
@@ -201,7 +253,7 @@ section {
 }
 
 input {
-    width: 100%;
+    width: 30%;
     padding: 10px;
     margin: 10px 0;
     border: 2px solid #ddd;
@@ -216,7 +268,7 @@ input:focus {
 }
 
 .message{
-    width: 600px;
+    width: 100%;
     height: 250px;
     padding: 10px;
     margin: 10px 0;
@@ -234,7 +286,7 @@ input:focus {
 }
 
 .submitbtn{
-    width: 100%;
+    width: 350px;
     padding: 12px;
     margin: 10px 0;
     background: var(--main-bule) ;
@@ -242,7 +294,7 @@ input:focus {
     font-size: 18px;
     font-weight: bold;
     border: none;
-    border-radius: 6px;
+    border-radius: 15px;
     cursor: pointer;
     transition: background 0.3s ease;
 }
@@ -251,24 +303,37 @@ input:focus {
     background: #2a5cf9;
 }
 
-/* Small Screens  */
 
-  
+
+
+/* --------------------- Small Screens --------------------- */
 @media (max-width : 768px){
 
-    .main{
-        background-attachment: scroll;
-        background-size: cover;
-    }
-    
-    .header {
-        padding: 10px 20px;
-    }
-    
     .logo{
-        margin-left:0;
+        position: absolute;
+        left: 20px;
+        top: 10px;
     }
 
+    .main{
+        flex-direction: column; 
+        text-align: center;
+        
+    }
+
+
+    .main h2 {
+        font-size: 20px;
+    }
+
+    .main h3 {
+        font-size: 18px;
+    }
+
+    .main .main-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
 
     .nav-links {
         display: flex; /* Keep flex so it doesn't break */
@@ -284,7 +349,7 @@ input:focus {
     }
 
     .nav-links.show {
-        right: 20px; /* Slide in */
+        right:50px; /* Slide in */
     }
 
     .hamburger {
@@ -298,6 +363,28 @@ input:focus {
     .card img{
         width: 95%;
     }
+
+    .form{
+        width: 320px;
+    }
+
+    input ,.message{
+        width: 100%;
+    }
+
+    .submitbtn{
+        width: 100px;
+    }
+
+
+    .btn-primary{
+        width: 100px;
+        height: 20px;
+        
+        font-size: xx-small;
+    }
+
+
 }
 
 

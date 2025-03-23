@@ -16,5 +16,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Change Color
+
+
+function toggleDarkMode() {
+    const body = document.body;
+    const isDark = body.classList.toggle("dark-mode"); 
+
+    //change button text
+    const button = document.querySelector("button");
+    button.textContent = isDark ? "Switch to Light" : "Switch to Dark";
+}
 
 

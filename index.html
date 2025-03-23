@@ -13,6 +13,7 @@
 <body>
 
     <header>
+        
         <a href="#" class="logo">Yassin</a>
         <nav class="navigation">
             <div class="hamburger" id="hamburger" onclick="togglemenu()"> ☰ </div> 
@@ -21,9 +22,11 @@
         <li>  <a href="#">Home</a>  </li> 
          <li>  <a href="#Skills">Skills</a>    </li> 
          <li> <a href="#Projects">Projects</a> </li>  
-         <li><a href="#Contact">Contact Me</a></li>        
+         <li><a href="#Contact">Contact</a></li>  
+         <li><button onclick="toggleDarkMode()"  class="btn btn-primary">Switch to Dark</button></li>      
         </ul>
         </nav>
+        
     </header>
 
     <section class="main">
@@ -31,6 +34,9 @@
             <h2>Hello, I'm Yassin<br><span>I'm a Software Developer</span></h2>
             <h3>I build amazing programs and websites!</h3>
             <a href="#Projects" class="main-btn">View my work</a>
+            
+
+
             <div class="social-icons">
                 <a href="https://www.facebook.com/yassinahmedyehia12" target="_blank"><i class="fab fa-facebook"></i></a>
                 <a href="https://github.com/yassinah82" target="_blank"><i class="fab fa-github" ></i></a>
@@ -132,7 +138,7 @@
             </div>
     </section>
     <section class="contact" id="Contact">
-         <form class="form" name="Contact" action="#">
+         <form class="form" name="Contact" action="https://formsubmit.co/yassinah82@gmail.com" method="post">
         <h2 class="form-h2">Contact Me</h2>
         <label for="">Have a question?</label><br>
         <label for="">Send Your message in the form below and I will get back with you</label>
