@@ -138,14 +138,16 @@
             </div>
     </section>
     <section class="contact" id="Contact">
-         <form class="form" name="Contact" action="https://formsubmit.co/yassinah82@gmail.com" method="post">
+        <form class="form" name="Contact" method="POST" data-netlify="true" onSubmit="submit" onsubmit="readOnly()" data-netlify-honeypot="bot-feild">
+        <input name="bot-feild" class="d-none">
+
         <h2 class="form-h2">Contact Me</h2>
-        <label for="">Have a question?</label><br>
-        <label for="">Send Your message in the form below and I will get back with you</label>
+        <label for="#">Have a question?</label><br>
+        <label for="#">Send Your message in the form below and I will get back with you</label>
             <hr>
-            <input class="form-name" type="text" pattern="[A-Za-z]+" title="Only letters allowed!" placeholder="Full Name" required>
-            <input class="form-email" type="email" placeholder="Email Address" required>
-            <textarea class="message" name="message" placeholder="Your Message" required></textarea>
+            <input name="fullname" class="form-name" type="text" pattern="[A-Za-z]+" title="Only letters allowed!"  placeholder="Full Name" id="name" required>
+            <input name="email" class="form-email" type="email" placeholder="Email Address" id="email" required>
+            <textarea name="message" class="message" name="message" placeholder="Your Message" id="message" required></textarea>
             <input type="submit" class="submitbtn">
             
 
