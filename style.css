@@ -303,6 +303,15 @@ input:focus {
     background: #2a5cf9;
 }
 
+.call {
+    display: flex;
+    flex-direction:row ;
+    align-items: end;
+    justify-content: end;
+    position: absolute;
+    right: 100px;
+}
+
 
 
 

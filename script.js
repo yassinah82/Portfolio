@@ -27,17 +27,3 @@ function toggleDarkMode() {
     const button = document.querySelector("button");
     button.textContent = isDark ? "Switch to Light" : "Switch to Dark";
 }
-
-
-// contact form function 
-
-function readOnly(){
-    const name = document.getElementById("name")
-    const email = document.getElementById("email")
-    const message = document.getElementById("message")
-
-    name.setAttribute("readonly",true)
-    email.setAttribute("readonly",true)
-    message.setAttribute("readonly",true)
-
-}
