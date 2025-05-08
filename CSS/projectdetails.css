@@ -1,0 +1,182 @@
+/* Todo List Project Details Styles */
+.project-details-container {
+    padding: 120px 50px 50px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+}
+
+.project-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.project-header h1 {
+    color: var(--main-bule);
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.project-subtitle {
+    color: #666;
+    font-size: 1.2em;
+}
+
+.project-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 50px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: var(--main-bule);
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.feature-card {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card h3 {
+    color: var(--main-bule);
+    margin-bottom: 15px;
+}
+
+.feature-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-card ul li {
+    padding: 8px 0;
+    color: #555;
+    position: relative;
+    padding-left: 25px;
+}
+
+.feature-card ul li::before {
+    content: "✓";
+    color: var(--main-bule);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.tech-stack ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tech-stack ul li {
+    padding: 10px 0;
+    color: #555;
+    position: relative;
+    padding-left: 25px;
+}
+
+.tech-stack ul li::before {
+    content: "•";
+    color: var(--main-bule);
+    position: absolute;
+    left: 0;
+    font-size: 1.5em;
+}
+
+.screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.screenshot {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.screenshot:hover {
+    transform: scale(1.02);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.cta-buttons .btn {
+    padding: 12px 30px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.cta-buttons .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark Mode Styles */
+.dark-mode .project-details-container {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+.dark-mode section {
+    background: #2d2d2d;
+}
+
+.dark-mode .project-subtitle {
+    color: #ccc;
+}
+
+.dark-mode .feature-card {
+    background: #333;
+}
+
+.dark-mode .feature-card ul li,
+.dark-mode .tech-stack ul li {
+    color: #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project-details-container {
+        padding: 100px 20px 30px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .cta-buttons .btn {
+        width: 100%;
+    }
+}

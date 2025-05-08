@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
 // Change Color
 
 
@@ -27,3 +26,4 @@ function toggleDarkMode() {
     const button = document.querySelector("button");
     button.textContent = isDark ? "Switch to Light" : "Switch to Dark";
 }
+
