@@ -151,6 +151,7 @@ section {
 
 .main-btn:hover {
     background-color: #0a49f6;
+    color: white;
     transform: scale(1.1);
 }
 
@@ -311,8 +312,6 @@ input:focus {
     position: absolute;
     right: 100px;
 }
-
-
 
 
 /* --------------------- Small Screens --------------------- */
