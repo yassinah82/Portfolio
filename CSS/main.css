@@ -137,22 +137,24 @@ section {
 
 .main-btn {
     color: #fff;
-    background-color: #3a6cf4;
+    background: linear-gradient(45deg, #3a6cf4, #4e9eff);
     text-decoration: none;
     font-size: 1.1em;
     font-weight: 600;
     display: inline-block;
     padding: 0.9375em 2.1875em;
     letter-spacing: 1px;
-    border-radius: 15px;
-    margin-bottom: 40px;
-    transition: 0.7s ease;
+    border-radius: 25px;
+    margin: 2em auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(58, 108, 244, 0.3);
+    width: fit-content;
 }
 
 .main-btn:hover {
-    background-color: #0a49f6;
-    color: white;
-    transform: scale(1.1);
+    background: linear-gradient(45deg, #4e9eff, #3a6cf4);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(58, 108, 244, 0.4);
 }
 
 .social-icons a {
@@ -313,6 +315,17 @@ input:focus {
     right: 100px;
 }
 
+.card .info h3 i {
+    color: var(--main-bule);
+    margin-right: 10px;
+    font-size: 0.9em;
+}
+
+.card .info h3 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
 
 /* --------------------- Small Screens --------------------- */
 @media (max-width : 768px){
