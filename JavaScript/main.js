@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.querySelector(".hamburger"); // Use querySelector for class
+    const hamburger = document.querySelector(".hamburger"); 
     const navLinks = document.getElementById("nav-links");
-    const links = document.querySelectorAll(".nav-links li a"); // Select all links inside nav-links
+    const links = document.querySelectorAll(".nav-links li a"); 
 
     // Toggle menu on hamburger click
     hamburger.addEventListener("click", function () {
