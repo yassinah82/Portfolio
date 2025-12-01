@@ -1,6 +1,6 @@
 # 🧠 Yassin's Dev Portfolio 🚀
 
-Yo! I'm Yassin — a Grade 8 software dev who's vibing with Python, Flutter, and Front-end.  
+Yo! I'm Yassin — a Grade 9 software dev who's vibing with Python, Flutter, and Front-end.  
 This repo is my personal **Portfolio Website** – where I flex my projects, skills, and ambitions.  
 Wanna see it live? Boom 💥 → [Click Here](https://about-yassin.netlify.app/)
 
