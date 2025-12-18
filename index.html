@@ -13,21 +13,23 @@
 <body>
 
     <header>
-        
-        <a href="#" class="logo">Yassin</a>
-        <nav class="navigation">
-            <div class="hamburger" id="hamburger" onclick="togglemenu()"> ☰ </div> 
+  <a href="#" class="logo">Yassin</a>
 
-        <ul class="nav-links" id="nav-links">
-        <li>  <a href="#">Home</a>  </li> 
-         <li>  <a href="#Skills">Skills</a>    </li> 
-         <li> <a href="html/projects.html">Projects</a> </li>  
-         <li><a href="#Contact">Contact</a></li>  
-         <li><button onclick="toggleDarkMode()"  class="btn btn-primary">Switch to Dark</button></li>      
-        </ul>
-        </nav>
-        
-    </header>
+  <nav class="navigation">
+    <div class="hamburger" id="hamburger"> ☰ </div>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#Skills">Skills</a></li>
+      <li><a href="html/projects.html">Projects</a></li>
+      <li><a href="#Contact">Contact</a></li>
+      <li>
+        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
 
     <section class="main">
         <div>
@@ -47,6 +49,31 @@
             </div>
         </div>
     </section>
+
+    <!-- About Section -->
+<!-- About Section -->
+    <section id="about" class="section">
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about-content">
+        <p>
+            I’m <span class="highlight">Yassin</span>, a 15-year-old developer from Cairo.
+            I’m passionate about programming and technology, and I enjoy learning
+            and exploring everything related to tech.
+        </p>
+
+        <p>
+            My skills include <span class="highlight">Front-End Web Development</span>,
+            <span class="highlight">Flutter</span>,
+            <span class="highlight">Python</span>,
+            and <span class="highlight">Godot</span>.
+            I’m currently learning <span class="highlight">Unity</span> to improve my game development journey.
+        </p>
+
+    </div>
+    </section>
+
+
 
     <section class="cards" id="Skills">
         <h2 class="title">Skills</h2>
