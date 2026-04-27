@@ -366,6 +366,11 @@ section {
 
 .dark-mode .form-control {
     background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.dark-mode .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .form-control:focus {

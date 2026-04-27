@@ -205,8 +205,7 @@
     
 
     <section class="contact" id="Contact" data-aos="fade-up">
-        <form class="form" name="Contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-            <input name="bot-field" class="d-none">
+        <form class="form" id="contact-form">
             <h2 class="form-h2">Let's Connect</h2>
             <p class="form-subtitle">Got a project idea, a question, or just want to say hi? Drop me a message and I'll get back to you as soon as possible.</p>
             <div class="form-group">
@@ -218,7 +217,8 @@
             <div class="form-group">
                 <textarea name="message" class="form-control" placeholder="Your Message" id="message" required></textarea>
             </div>
-            <button type="submit" class="submitbtn">Send Message</button>
+            <button type="submit" class="submitbtn" id="submit-btn">Send Message</button>
+            <div id="form-status" style="margin-top: 15px; text-align: center; font-weight: bold; display: none;"></div>
         </form>
     </section>
 
