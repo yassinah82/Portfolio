@@ -1,8 +1,9 @@
-/* Todo List Project Details Styles */
+/* Project Details Page Styles */
 .project-details-container {
     padding: 120px 50px 50px;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+    background: var(--bg-color);
+    transition: var(--transition);
 }
 
 .project-header {
@@ -11,14 +12,14 @@
 }
 
 .project-header h1 {
-    color: var(--main-bule);
-    font-size: 2.5em;
+    color: var(--primary-color);
+    font-size: 2.5rem;
     margin-bottom: 15px;
 }
 
 .project-subtitle {
-    color: #666;
-    font-size: 1.2em;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
 }
 
 .project-content {
@@ -26,18 +27,20 @@
     margin: 0 auto;
 }
 
-section {
+.project-details-container section {
     margin-bottom: 50px;
-    background: white;
+    background: var(--card-bg);
     padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
 }
 
-section h2 {
-    color: var(--main-bule);
+.project-details-container section h2 {
+    color: var(--primary-color);
     margin-bottom: 20px;
-    font-size: 1.8em;
+    font-size: 1.8rem;
 }
 
 .features-grid {
@@ -48,18 +51,20 @@ section h2 {
 }
 
 .feature-card {
-    background: #f8f9fa;
+    background: var(--bg-color);
     padding: 20px;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    transition: var(--transition);
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
+    border-color: var(--primary-color);
 }
 
 .feature-card h3 {
-    color: var(--main-bule);
+    color: var(--primary-color);
     margin-bottom: 15px;
 }
 
@@ -70,14 +75,14 @@ section h2 {
 
 .feature-card ul li {
     padding: 8px 0;
-    color: #555;
+    color: var(--text-secondary);
     position: relative;
     padding-left: 25px;
 }
 
 .feature-card ul li::before {
     content: "✓";
-    color: var(--main-bule);
+    color: var(--primary-color);
     position: absolute;
     left: 0;
     font-weight: bold;
@@ -90,14 +95,14 @@ section h2 {
 
 .tech-stack ul li {
     padding: 10px 0;
-    color: #555;
+    color: var(--text-secondary);
     position: relative;
     padding-left: 25px;
 }
 
 .tech-stack ul li::before {
     content: "•";
-    color: var(--main-bule);
+    color: var(--primary-color);
     position: absolute;
     left: 0;
     font-size: 1.5em;
@@ -112,9 +117,9 @@ section h2 {
 
 .screenshot {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: var(--transition);
 }
 
 .screenshot:hover {
@@ -130,36 +135,14 @@ section h2 {
 
 .cta-buttons .btn {
     padding: 12px 30px;
-    font-size: 1.1em;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    transition: var(--transition);
 }
 
 .cta-buttons .btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Dark Mode Styles */
-.dark-mode .project-details-container {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-}
-
-.dark-mode section {
-    background: #2d2d2d;
-}
-
-.dark-mode .project-subtitle {
-    color: #ccc;
-}
-
-.dark-mode .feature-card {
-    background: #333;
-}
-
-.dark-mode .feature-card ul li,
-.dark-mode .tech-stack ul li {
-    color: #ccc;
 }
 
 /* Responsive Design */
