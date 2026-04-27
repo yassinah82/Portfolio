@@ -8,7 +8,11 @@
     "dev": "nodemon server.js",
     "seed": "node scripts/seedAdmin.js"
   },
-  "keywords": ["portfolio", "backend", "api"],
+  "keywords": [
+    "portfolio",
+    "backend",
+    "api"
+  ],
   "author": "Yassin Ahmed",
   "license": "MIT",
   "dependencies": {
@@ -21,7 +25,8 @@
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.0",
-    "nodemailer": "^6.9.15"
+    "nodemailer": "^6.9.15",
+    "serverless-http": "^4.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"

@@ -1,0 +1,13 @@
+[build]
+  command = "cd backend && npm install"
+  publish = "."
+  functions = "backend/functions"
+
+[functions]
+  node_bundler = "nft"
+  included_files = ["backend/src/**"]
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200

@@ -116,8 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
             formStatus.textContent = "Please wait...";
 
             try {
-                // Send POST request to our new backend
-                const response = await fetch("http://localhost:5000/api/messages", {
+                // Send POST request to our backend
+                const response = await fetch("/api/messages", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
