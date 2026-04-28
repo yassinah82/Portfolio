@@ -1,5 +1,10 @@
 const rateLimit = require("express-rate-limit");
 
+// Fallback key generator for serverless environments where req.ip may be undefined
+const getKey = (req) => {
+  return req.ip || req.headers["x-forwarded-for"] || req.headers["x-nf-client-connection-ip"] || "unknown";
+};
+
 // Contact form: 5 requests per 15 minutes per IP
 const contactLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -10,7 +15,8 @@ const contactLimiter = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
-  validate: { xForwardedForHeader: false },
+  keyGenerator: getKey,
+  validate: false,
 });
 
 // General API: 100 requests per 15 minutes per IP
@@ -23,7 +29,9 @@ const apiLimiter = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
-  validate: { xForwardedForHeader: false },
+  keyGenerator: getKey,
+  validate: false,
 });
 
 module.exports = { contactLimiter, apiLimiter };
+
