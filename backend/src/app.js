@@ -11,6 +11,9 @@ const messageRoutes = require("./routes/messages");
 
 const app = express();
 
+// Trust proxy (required for Netlify/serverless environments)
+app.set("trust proxy", 1);
+
 // --------------- Security Middleware ---------------
 app.use(helmet());
 app.use(
