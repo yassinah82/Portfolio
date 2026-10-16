@@ -1,3 +1,21 @@
+// ---------------- Profile Image Auto-Fallback ----------------
+window.handleProfileImageFallback = function (img) {
+    if (!img) return;
+    if (!img.dataset.attempt) {
+        img.dataset.attempt = "1";
+        img.src = "Images/profile.jpg";
+    } else if (img.dataset.attempt === "1") {
+        img.dataset.attempt = "2";
+        img.src = "Images/profile.jpeg";
+    } else if (img.dataset.attempt === "2") {
+        img.dataset.attempt = "3";
+        img.src = "Images/profile.webp";
+    } else {
+        img.onerror = null;
+        img.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' width='100%25' height='100%25'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%233a6cf4'/><stop offset='100%25' stop-color='%23601cfc'/></linearGradient></defs><rect width='100%25' height='100%25' fill='%231e293b'/><circle cx='100' cy='75' r='40' fill='url(%23g)'/><path d='M40 170 C40 125, 160 125, 160 170 Z' fill='url(%23g)'/></svg>";
+    }
+};
+
 document.addEventListener("DOMContentLoaded", function () {
     // ---------------- AOS Initialization ----------------
     if (typeof AOS !== 'undefined') {
