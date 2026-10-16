@@ -370,17 +370,40 @@ section {
 
 .dark-mode .form-control {
     background: rgba(255, 255, 255, 0.05);
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
+/* Focused, active, and typing text in text boxes */
 .form-control:focus,
+.form-control:active,
+.form-control:focus-visible,
 .search-input:focus,
+.search-input:active,
 input:focus,
+input:active,
+input:focus-visible,
 textarea:focus,
+textarea:active,
+textarea:focus-visible,
 select:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    background: transparent;
+    outline: none !important;
+    border-color: var(--primary-color) !important;
     color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    caret-color: #ffffff !important;
+    background-color: #1e293b !important;
+    box-shadow: 0 0 0 3px rgba(58, 108, 244, 0.25) !important;
+}
+
+.dark-mode .form-control:focus,
+.dark-mode .search-input:focus,
+.dark-mode input:focus,
+.dark-mode textarea:focus {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    caret-color: #ffffff !important;
 }
 
 textarea.form-control {
