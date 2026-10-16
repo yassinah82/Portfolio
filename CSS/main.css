@@ -372,10 +372,15 @@ section {
     background: rgba(255, 255, 255, 0.05);
 }
 
-.form-control:focus {
+.form-control:focus,
+.search-input:focus,
+input:focus,
+textarea:focus,
+select:focus {
     outline: none;
     border-color: var(--primary-color);
     background: transparent;
+    color: #ffffff !important;
 }
 
 textarea.form-control {
