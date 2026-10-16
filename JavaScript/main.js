@@ -159,4 +159,121 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+
+    // ---------------- Dynamic Skills & Projects Sync ----------------
+    function escapeHTML(str) {
+        if (!str) return "";
+        return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    async function loadDynamicSkills() {
+        const skillsContainer = document.querySelector("#Skills .content");
+        if (!skillsContainer) return;
+
+        try {
+            const res = await fetch("/api/skills");
+            const json = await res.json();
+            if (res.ok && json.success && Array.isArray(json.data) && json.data.length > 0) {
+                json.data.forEach(skill => {
+                    const card = document.createElement("div");
+                    card.className = "card";
+                    const tagList = Array.isArray(skill.tags) ? skill.tags : (skill.tags ? skill.tags.split(",") : []);
+                    card.innerHTML = `
+                        <div class="icon">
+                            <i class="${escapeHTML(skill.icon || 'fas fa-code')}"></i>
+                        </div>
+                        <div class="info">
+                            <h3>${escapeHTML(skill.title)}</h3>
+                            <p>${escapeHTML(skill.description)}</p>
+                            <div class="tags">
+                                ${tagList.map(t => `<span>${escapeHTML(t.trim())}</span>`).join("")}
+                            </div>
+                        </div>
+                    `;
+                    skillsContainer.appendChild(card);
+                });
+            }
+        } catch (err) {
+            console.warn("Could not load dynamic skills:", err);
+        }
+    }
+
+    async function loadDynamicProjects() {
+        const homeProjectsContainer = document.querySelector("#Projects .content");
+        const fullProjectsContainer = document.querySelector(".projects-grid");
+
+        if (homeProjectsContainer) {
+            try {
+                const res = await fetch("/api/projects?featured=true");
+                const json = await res.json();
+                if (res.ok && json.success && Array.isArray(json.data) && json.data.length > 0) {
+                    json.data.forEach(p => {
+                        const card = document.createElement("div");
+                        card.className = "card";
+                        const tagList = Array.isArray(p.tags) ? p.tags : (p.tags ? p.tags.split(",") : []);
+                        card.innerHTML = `
+                            <div class="image">
+                                <img src="${escapeHTML(p.image_url || 'Images/background.png')}" alt="${escapeHTML(p.title)}" onerror="this.src='Images/background.png'">
+                            </div>
+                            <div class="info">
+                                <h3><i class="fas fa-folder-open"></i> ${escapeHTML(p.title)}</h3>
+                                <p>${escapeHTML(p.description)}</p>
+                                <div class="tags">
+                                    ${tagList.map(t => `<span>${escapeHTML(t.trim())}</span>`).join("")}
+                                </div>
+                            </div>
+                            <div class="card-links">
+                                ${p.live_url && p.live_url !== '#' ? `<a class="btn btn-primary" href="${escapeHTML(p.live_url)}" target="_blank">Visit Site</a>` : ''}
+                                ${p.details_url ? `<a class="btn btn-secondary" href="${escapeHTML(p.details_url)}">Details</a>` : ''}
+                            </div>
+                        `;
+                        homeProjectsContainer.appendChild(card);
+                    });
+                }
+            } catch (err) {
+                console.warn("Could not load dynamic homepage projects:", err);
+            }
+        }
+
+        if (fullProjectsContainer) {
+            try {
+                const res = await fetch("/api/projects");
+                const json = await res.json();
+                if (res.ok && json.success && Array.isArray(json.data) && json.data.length > 0) {
+                    json.data.forEach(p => {
+                        const card = document.createElement("div");
+                        card.className = "project-card";
+                        const tagList = Array.isArray(p.tags) ? p.tags : (p.tags ? p.tags.split(",") : []);
+                        card.innerHTML = `
+                            <img src="${escapeHTML(p.image_url || '../Images/background.png')}" alt="${escapeHTML(p.title)}" class="project-image" onerror="this.src='../Images/background.png'">
+                            <div class="project-content">
+                                <h3 class="project-title">${escapeHTML(p.title)}</h3>
+                                <p class="project-description">${escapeHTML(p.description)}</p>
+                                ${tagList.length > 0 ? `
+                                    <ul class="project-features">
+                                        ${tagList.map(t => `<li>${escapeHTML(t.trim())}</li>`).join("")}
+                                    </ul>
+                                ` : ''}
+                                <div class="project-links">
+                                    ${p.live_url && p.live_url !== '#' ? `<a href="${escapeHTML(p.live_url)}" target="_blank" class="project-btn primary-btn">Live Demo</a>` : ''}
+                                    ${p.details_url ? `<a href="${escapeHTML(p.details_url)}" class="project-btn secondary-btn">Details</a>` : ''}
+                                </div>
+                            </div>
+                        `;
+                        fullProjectsContainer.appendChild(card);
+                    });
+                }
+            } catch (err) {
+                console.warn("Could not load dynamic projects on projects page:", err);
+            }
+        }
+    }
+
+    loadDynamicSkills();
+    loadDynamicProjects();
 });
