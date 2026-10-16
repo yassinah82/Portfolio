@@ -46,16 +46,47 @@ export default async (req, context) => {
 
   // Auto-seed existing default skills if table is empty
   try {
-    const existing = await db.sql`SELECT COUNT(*)::int as count FROM skills;`;
-    if (existing && existing[0] && parseInt(existing[0].count, 10) === 0) {
-      await db.sql`
-        INSERT INTO skills (title, description, icon, tags) VALUES
-        ('Web Development', 'Crafting responsive, modern websites with clean code and smooth user experiences', 'fas fa-code', ARRAY['HTML5', 'CSS3', 'JavaScript', 'Bootstrap']),
-        ('Python Development', 'Building automation scripts, CLI tools, and logic-driven applications to solve real-world problems', 'fa-brands fa-python', ARRAY['Python', 'Automation', 'CLI']),
-        ('Data Science & ML', 'Learning data science and machine learning with Python — analyzing data and building models using Pandas, NumPy, Scikit-learn, Matplotlib, and Seaborn', 'fa-solid fa-brain', ARRAY['Pandas', 'Scikit-Learn', 'NumPy', 'Matplotlib', 'Seaborn']),
-        ('Game Dev with Godot & Unity', 'Building 2D and 3D experiences with foundational game development basics across Godot and Unity', 'fa-solid fa-gamepad', ARRAY['Godot', 'GDScript', 'Unity', 'C#']),
-        ('Flutter Mobile Apps', 'Engineering beautiful, cross-platform mobile applications — one codebase, every device', 'fas fa-mobile', ARRAY['Flutter', 'Dart', 'Firebase']);
-      `;
+    const existing = await db.sql`SELECT id FROM skills LIMIT 1;`;
+    if (!existing || existing.length === 0) {
+      const defaultSkills = [
+        {
+          title: "Web Development",
+          desc: "Crafting responsive, modern websites with clean code and smooth user experiences",
+          icon: "fas fa-code",
+          tags: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+        },
+        {
+          title: "Python Development",
+          desc: "Building automation scripts, CLI tools, and logic-driven applications to solve real-world problems",
+          icon: "fa-brands fa-python",
+          tags: ["Python", "Automation", "CLI"],
+        },
+        {
+          title: "Data Science & ML",
+          desc: "Learning data science and machine learning with Python — analyzing data and building models using Pandas, NumPy, Scikit-learn, Matplotlib, and Seaborn",
+          icon: "fa-solid fa-brain",
+          tags: ["Pandas", "Scikit-Learn", "NumPy", "Matplotlib", "Seaborn"],
+        },
+        {
+          title: "Game Dev with Godot & Unity",
+          desc: "Building 2D and 3D experiences with foundational game development basics across Godot and Unity",
+          icon: "fa-solid fa-gamepad",
+          tags: ["Godot", "GDScript", "Unity", "C#"],
+        },
+        {
+          title: "Flutter Mobile Apps",
+          desc: "Engineering beautiful, cross-platform mobile applications — one codebase, every device",
+          icon: "fas fa-mobile",
+          tags: ["Flutter", "Dart", "Firebase"],
+        },
+      ];
+
+      for (const s of defaultSkills) {
+        await db.sql`
+          INSERT INTO skills (title, description, icon, tags)
+          VALUES (${s.title}, ${s.desc}, ${s.icon}, ${s.tags});
+        `;
+      }
     }
   } catch (err) {
     console.error("Auto-seed skills error:", err.message);
