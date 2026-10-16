@@ -172,7 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     async function loadDynamicSkills() {
-        const skillsContainer = document.querySelector("#Skills .content");
+        const skillsContainer = document.querySelector("#Skills .content") || document.getElementById("skills-container");
         if (!skillsContainer) return;
 
         try {
@@ -198,6 +198,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     `;
                     skillsContainer.appendChild(card);
                 });
+                if (typeof AOS !== 'undefined') {
+                    AOS.refresh();
+                }
+            } else if (json.data && json.data.length === 0) {
+                skillsContainer.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary); padding: 30px;"><p>No skills added yet.</p></div>`;
             }
         } catch (err) {
             console.warn("Could not load dynamic skills:", err);
@@ -205,9 +210,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     async function loadDynamicProjects() {
-        const homeProjectsContainer = document.querySelector("#Projects .content");
-        const fullProjectsContainer = document.querySelector(".projects-grid");
+        const homeProjectsContainer = document.querySelector("#Projects .content") || document.getElementById("projects-container");
+        const fullProjectsContainer = document.querySelector(".projects-grid") || document.getElementById("projects-grid");
 
+        // 1. Featured projects for main page (index.html)
         if (homeProjectsContainer) {
             try {
                 const res = await fetch("/api/projects?featured=true");
@@ -237,12 +243,18 @@ document.addEventListener("DOMContentLoaded", function () {
                         `;
                         homeProjectsContainer.appendChild(card);
                     });
+                    if (typeof AOS !== 'undefined') {
+                        AOS.refresh();
+                    }
+                } else if (json.data && json.data.length === 0) {
+                    homeProjectsContainer.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary); padding: 30px;"><p>No featured projects found.</p></div>`;
                 }
             } catch (err) {
                 console.warn("Could not load dynamic homepage projects:", err);
             }
         }
 
+        // 2. All projects for projects page (html/projects.html)
         if (fullProjectsContainer) {
             try {
                 const res = await fetch("/api/projects");
@@ -272,6 +284,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         `;
                         fullProjectsContainer.appendChild(card);
                     });
+                } else if (json.data && json.data.length === 0) {
+                    fullProjectsContainer.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary); padding: 40px;"><p>No projects found in database.</p></div>`;
                 }
             } catch (err) {
                 console.warn("Could not load dynamic projects on projects page:", err);
