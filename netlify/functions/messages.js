@@ -9,10 +9,15 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, x-admin-key, Authorization",
 };
 
-// Admin authentication verification
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "ya#1982Ya@";
+// Admin authentication verification from environment variable
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 function isAuthorized(req) {
+  if (!ADMIN_PASSWORD) {
+    console.warn("ADMIN_PASSWORD is not configured in Netlify Environment Variables.");
+    return false;
+  }
+
   const headerKey = req.headers.get("x-admin-key");
   const authHeader = req.headers.get("authorization");
   
