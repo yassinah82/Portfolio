@@ -93,4 +93,69 @@ document.addEventListener("DOMContentLoaded", function () {
         applyTheme(isDark);
         localStorage.setItem("theme", isDark ? "dark" : "light");
     });
+
+    // ---------------- Contact Form (Netlify Database) ----------------
+    const contactForm = document.getElementById("contact-form");
+    const formStatus = document.getElementById("form-status");
+    const submitBtn = document.getElementById("submit-btn");
+
+    if (contactForm) {
+        contactForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (!name || !email || !message) return;
+
+            submitBtn.textContent = "Sending...";
+            submitBtn.disabled = true;
+            if (formStatus) {
+                formStatus.style.display = "block";
+                formStatus.style.color = "var(--text-secondary)";
+                formStatus.textContent = "Please wait...";
+            }
+
+            try {
+                const response = await fetch("/api/messages", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ name, email, message }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    if (formStatus) {
+                        formStatus.style.color = "#28a745";
+                        formStatus.textContent = "✅ " + (data.message || "Message sent successfully!");
+                    }
+                    contactForm.reset();
+                } else {
+                    if (formStatus) {
+                        formStatus.style.color = "#dc3545";
+                        formStatus.textContent = "❌ " + (data.error || data.message || "Failed to send message.");
+                    }
+                }
+            } catch (error) {
+                console.error("Error submitting contact form:", error);
+                if (formStatus) {
+                    formStatus.style.color = "#dc3545";
+                    formStatus.textContent = "❌ Connection error. Please try again later.";
+                }
+            } finally {
+                submitBtn.textContent = "Send Message";
+                submitBtn.disabled = false;
+
+                if (formStatus) {
+                    setTimeout(() => {
+                        formStatus.style.display = "none";
+                    }, 6000);
+                }
+            }
+        });
+    }
 });
