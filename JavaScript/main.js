@@ -179,6 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const res = await fetch("/api/skills");
             const json = await res.json();
             if (res.ok && json.success && Array.isArray(json.data) && json.data.length > 0) {
+                skillsContainer.innerHTML = "";
                 json.data.forEach(skill => {
                     const card = document.createElement("div");
                     card.className = "card";
@@ -212,13 +213,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 const res = await fetch("/api/projects?featured=true");
                 const json = await res.json();
                 if (res.ok && json.success && Array.isArray(json.data) && json.data.length > 0) {
+                    homeProjectsContainer.innerHTML = "";
                     json.data.forEach(p => {
                         const card = document.createElement("div");
                         card.className = "card";
                         const tagList = Array.isArray(p.tags) ? p.tags : (p.tags ? p.tags.split(",") : []);
+                        const imgPath = p.image_url ? (p.image_url.startsWith("/") || p.image_url.startsWith("http") ? p.image_url : "/" + p.image_url) : "/Images/background.png";
                         card.innerHTML = `
                             <div class="image">
-                                <img src="${escapeHTML(p.image_url || 'Images/background.png')}" alt="${escapeHTML(p.title)}" onerror="this.src='Images/background.png'">
+                                <img src="${escapeHTML(imgPath)}" alt="${escapeHTML(p.title)}" onerror="this.src='/Images/background.png'">
                             </div>
                             <div class="info">
                                 <h3><i class="fas fa-folder-open"></i> ${escapeHTML(p.title)}</h3>
@@ -245,12 +248,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 const res = await fetch("/api/projects");
                 const json = await res.json();
                 if (res.ok && json.success && Array.isArray(json.data) && json.data.length > 0) {
+                    fullProjectsContainer.innerHTML = "";
                     json.data.forEach(p => {
                         const card = document.createElement("div");
                         card.className = "project-card";
                         const tagList = Array.isArray(p.tags) ? p.tags : (p.tags ? p.tags.split(",") : []);
+                        const imgPath = p.image_url ? (p.image_url.startsWith("/") || p.image_url.startsWith("http") ? p.image_url : "/" + p.image_url) : "/Images/background.png";
                         card.innerHTML = `
-                            <img src="${escapeHTML(p.image_url || '../Images/background.png')}" alt="${escapeHTML(p.title)}" class="project-image" onerror="this.src='../Images/background.png'">
+                            <img src="${escapeHTML(imgPath)}" alt="${escapeHTML(p.title)}" class="project-image" onerror="this.src='/Images/background.png'">
                             <div class="project-content">
                                 <h3 class="project-title">${escapeHTML(p.title)}</h3>
                                 <p class="project-description">${escapeHTML(p.description)}</p>
