@@ -10,7 +10,7 @@ const corsHeaders = {
 };
 
 // Admin authentication verification
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "yassin2026";
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "ya#1982Ya@";
 
 function isAuthorized(req) {
   const headerKey = req.headers.get("x-admin-key");
