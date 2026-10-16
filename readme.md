@@ -2,7 +2,7 @@
 
 Yo! I'm Yassin — a Grade 9 software dev who's vibing with Python, Flutter, and Front-end.  
 This repo is my personal **Portfolio Website** – where I flex my projects, skills, and ambitions.  
-Wanna see it live? Boom 💥 → [Click Here](https://about-yassin.netlify.app/)
+Wanna see it live? Boom 💥 → [Click Here](https://aboutyassin.online/)
 
 ---
 
@@ -35,7 +35,7 @@ Or... contribute if you find a bug, typo, or have a ✨cool✨ idea!
 
 ## ⚡ Live Link
 
-👉 [about-yassin](https://about-yassin.netlify.app/)
+👉 [about-yassin](https://aboutyassin.online/)
 
 ---
 
