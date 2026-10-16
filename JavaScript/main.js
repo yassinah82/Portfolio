@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Software Developer",
                 "Frontend Developer",
                 "Game Developer",
+                "Data Science Enthusiast",
                 "Tech Enthusiast"
             ],
             typeSpeed: 60,

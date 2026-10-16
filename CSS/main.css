@@ -313,6 +313,10 @@ section {
     margin: 15px 0;
 }
 
+.cards .tags {
+    justify-content: center;
+}
+
 .tags span {
     background: rgba(58, 108, 244, 0.1);
     color: var(--primary-color);
