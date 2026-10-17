@@ -29,8 +29,8 @@ export default async function handler(req, res) {
         });
       }
 
-      // Insert message into Supabase
-      const { data: saved, error: dbErr } = await supabase
+      // Insert message into Supabase (insert-only to avoid RLS SELECT restrictions on private contact messages)
+      const { error: dbErr } = await supabase
         .from("messages")
         .insert([
           {
@@ -39,15 +39,13 @@ export default async function handler(req, res) {
             message: String(message).trim(),
             is_read: false,
           },
-        ])
-        .select("id, name, email, message, is_read, created_at")
-        .single();
+        ]);
 
       if (dbErr) {
         console.error("Supabase insert error:", dbErr);
         return res.status(500).json({
           success: false,
-          error: "Database error. Failed to save message.",
+          error: dbErr.message || "Database error. Failed to save message.",
         });
       }
 
@@ -86,13 +84,13 @@ export default async function handler(req, res) {
       return res.status(201).json({
         success: true,
         message: "Thank you! Your message has been sent successfully.",
-        data: saved,
       });
     } catch (err) {
       console.error("Error processing contact form message:", err);
       return res.status(500).json({
         success: false,
         error: "Internal server error. Failed to save message.",
+        details: err.message,
       });
     }
   }
