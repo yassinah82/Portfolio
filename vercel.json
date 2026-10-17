@@ -1,4 +1,5 @@
 {
+  "outputDirectory": ".",
   "cleanUrls": true,
   "rewrites": [
     {
@@ -7,4 +8,3 @@
     }
   ]
 }
-
