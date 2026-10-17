@@ -49,7 +49,7 @@ export default async function handler(req, res) {
   // ---------------- POST: Create new skill card ----------------
   if (req.method === "POST") {
     try {
-      const body = parseBody(req);
+      const body = await parseBody(req);
       const { title, description, icon, tags } = body || {};
 
       if (!title || !description) {
@@ -106,7 +106,7 @@ export default async function handler(req, res) {
   // ---------------- DELETE: Remove skill card ----------------
   if (req.method === "DELETE") {
     try {
-      const body = parseBody(req);
+      const body = await parseBody(req);
       const id = req.query.id || body.id;
 
       if (!id) {

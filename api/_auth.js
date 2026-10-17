@@ -31,13 +31,41 @@ export function setCorsHeaders(res) {
   );
 }
 
-export function parseBody(req) {
-  if (!req.body) return {};
-  if (typeof req.body === "object") return req.body;
+export async function parseBody(req) {
   try {
-    return JSON.parse(req.body);
-  } catch {
-    return {};
+    const raw = req.body;
+    if (raw) {
+      if (typeof raw === "object") return raw;
+      if (typeof raw === "string") {
+        try {
+          return JSON.parse(raw);
+        } catch {
+          return {};
+        }
+      }
+    }
+  } catch (e) {
+    // Vercel's req.body getter throws if payload is non-json or malformed
   }
-}
 
+  // Fallback: read raw chunks from request stream
+  try {
+    if (req && typeof req[Symbol.asyncIterator] === "function") {
+      let data = "";
+      for await (const chunk of req) {
+        data += chunk;
+      }
+      if (data && data.trim()) {
+        try {
+          return JSON.parse(data);
+        } catch {
+          return {};
+        }
+      }
+    }
+  } catch (streamErr) {
+    // Ignore stream read errors
+  }
+
+  return {};
+}

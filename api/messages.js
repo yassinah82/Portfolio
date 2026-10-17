@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   // ---------------- POST: Save new contact message (Public) ----------------
   if (req.method === "POST") {
     try {
-      const body = parseBody(req);
+      const body = await parseBody(req);
       const { name, email, message } = body || {};
 
       if (!name || !email || !message) {
@@ -91,7 +91,6 @@ export default async function handler(req, res) {
         success: false,
         error: "Internal server error. Failed to save message.",
         details: err.message,
-        stack: err.stack,
       });
     }
   }
@@ -155,7 +154,7 @@ export default async function handler(req, res) {
   // ---------------- PATCH: Update read/unread status ----------------
   if (req.method === "PATCH") {
     try {
-      const body = parseBody(req);
+      const body = await parseBody(req);
       const id = req.query.id || body.id;
       const is_read = body.is_read !== undefined ? Boolean(body.is_read) : true;
 
@@ -197,7 +196,7 @@ export default async function handler(req, res) {
   // ---------------- DELETE: Remove message by ID ----------------
   if (req.method === "DELETE") {
     try {
-      const body = parseBody(req);
+      const body = await parseBody(req);
       const id = req.query.id || body.id;
 
       if (!id) {

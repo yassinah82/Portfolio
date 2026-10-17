@@ -59,7 +59,7 @@ export default async function handler(req, res) {
   // ---------------- POST: Create new project card ----------------
   if (req.method === "POST") {
     try {
-      const body = parseBody(req);
+      const body = await parseBody(req);
       const {
         title,
         description,
@@ -132,7 +132,7 @@ export default async function handler(req, res) {
   // ---------------- DELETE: Remove project card ----------------
   if (req.method === "DELETE") {
     try {
-      const body = parseBody(req);
+      const body = await parseBody(req);
       const id = req.query.id || body.id;
 
       if (!id) {
