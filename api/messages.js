@@ -91,6 +91,7 @@ export default async function handler(req, res) {
         success: false,
         error: "Internal server error. Failed to save message.",
         details: err.message,
+        stack: err.stack,
       });
     }
   }
