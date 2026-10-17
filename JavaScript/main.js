@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("theme", isDark ? "dark" : "light");
     });
 
-    // ---------------- Contact Form (Netlify Database) ----------------
+    // ---------------- Contact Form (Supabase / API) ----------------
     const contactForm = document.getElementById("contact-form");
     const formStatus = document.getElementById("form-status");
     const submitBtn = document.getElementById("submit-btn");
